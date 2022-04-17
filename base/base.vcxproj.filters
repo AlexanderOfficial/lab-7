@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="THashTableOnList.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="TSearchTreeTable.cpp" />
+    <ClCompile Include="TInterface.cpp" />
+    <ClCompile Include="TPostfix.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="THashTableOnList.h" />
+    <ClInclude Include="TStack.h" />
+    <ClInclude Include="TBaseTable.h" />
+    <ClInclude Include="TList.h" />
+    <ClInclude Include="TSearchTreeTable.h" />
+    <ClInclude Include="TInterface.h" />
+    <ClInclude Include="TPostfix.h" />
+    <ClInclude Include="THierarchicalList.h" />
+    <ClInclude Include="TCompiler.h" />
+    <ClInclude Include="TLexicalAnalysis.h" />
+  </ItemGroup>
+</Project>
