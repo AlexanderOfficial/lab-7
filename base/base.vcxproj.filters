@@ -3,16 +3,15 @@
   <ItemGroup>
     <ClCompile Include="THashTableOnList.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="TSearchTreeTable.cpp" />
     <ClCompile Include="TInterface.cpp" />
     <ClCompile Include="TPostfix.cpp" />
+    <ClCompile Include="THierarchicalList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="THashTableOnList.h" />
     <ClInclude Include="TStack.h" />
     <ClInclude Include="TBaseTable.h" />
     <ClInclude Include="TList.h" />
-    <ClInclude Include="TSearchTreeTable.h" />
     <ClInclude Include="TInterface.h" />
     <ClInclude Include="TPostfix.h" />
     <ClInclude Include="THierarchicalList.h" />
