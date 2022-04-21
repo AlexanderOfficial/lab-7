@@ -19,7 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="TCompiler.cpp" />
     <ClCompile Include="THierarchicalList.cpp" />
+    <ClCompile Include="TLexicalAnalysis.cpp" />
     <ClCompile Include="TPostfix.cpp" />
     <ClCompile Include="TInterface.cpp" />
     <ClCompile Include="THashTableOnList.cpp" />

@@ -6,6 +6,8 @@
     <ClCompile Include="TInterface.cpp" />
     <ClCompile Include="TPostfix.cpp" />
     <ClCompile Include="THierarchicalList.cpp" />
+    <ClCompile Include="TLexicalAnalysis.cpp" />
+    <ClCompile Include="TCompiler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="THashTableOnList.h" />
