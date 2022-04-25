@@ -23,14 +23,14 @@
     <ClCompile Include="TMemoryManager.cpp" />
     <ClCompile Include="TLexicalAnalysis.cpp" />
     <ClCompile Include="TPostfix.cpp" />
-    <ClCompile Include="TLinkProg.cpp" />
+    <ClCompile Include="TProgLink.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="_.h" />
+    <ClInclude Include="TTextProg.h" />
     <ClInclude Include="TCompiler.h" />
     <ClInclude Include="TMemoryManager.h" />
-    <ClInclude Include="TLinkProg.h" />
+    <ClInclude Include="TProgLink.h" />
     <ClInclude Include="TLexicalAnalysis.h" />
     <ClInclude Include="TPostfix.h" />
     <ClInclude Include="TList.h" />

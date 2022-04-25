@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="TLinkProg.cpp" />
+    <ClCompile Include="TProgLink.cpp" />
     <ClCompile Include="TPostfix.cpp" />
     <ClCompile Include="TMemoryManager.cpp" />
     <ClCompile Include="TLexicalAnalysis.cpp" />
@@ -10,9 +10,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TStack.h" />
-    <ClInclude Include="_.h" />
+    <ClInclude Include="TTextProg.h" />
     <ClInclude Include="TList.h" />
-    <ClInclude Include="TLinkProg.h" />
+    <ClInclude Include="TProgLink.h" />
     <ClInclude Include="TPostfix.h" />
     <ClInclude Include="TMemoryManager.h" />
     <ClInclude Include="TCompiler.h" />
