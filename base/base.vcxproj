@@ -20,19 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TCompiler.cpp" />
-    <ClCompile Include="THierarchicalList.cpp" />
+    <ClCompile Include="TMemoryManager.cpp" />
     <ClCompile Include="TLexicalAnalysis.cpp" />
     <ClCompile Include="TPostfix.cpp" />
-    <ClCompile Include="TInterface.cpp" />
-    <ClCompile Include="THashTableOnList.cpp" />
+    <ClCompile Include="TLinkProg.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TBaseTable.h" />
+    <ClInclude Include="_.h" />
     <ClInclude Include="TCompiler.h" />
-    <ClInclude Include="THashTableOnList.h" />
-    <ClInclude Include="THierarchicalList.h" />
-    <ClInclude Include="TInterface.h" />
+    <ClInclude Include="TMemoryManager.h" />
+    <ClInclude Include="TLinkProg.h" />
     <ClInclude Include="TLexicalAnalysis.h" />
     <ClInclude Include="TPostfix.h" />
     <ClInclude Include="TList.h" />
