@@ -36,7 +36,7 @@ TProgLink* TTextProg::ReadRec(ifstream& ifs)
 			break;
 		}
 		else
-			if ((tstr[0] == 'b')&& (tstr[1] == 'e')&& (tstr[2] == 'g')) 
+			if ((tstr[0] == 'b')&& (tstr[1] == 'e')&& (tstr[2] == 'g') && (tstr[3] == 'i') && (tstr[4] == 'n'))
 			{
 				pRC->pDown = ReadRec(ifs);
 			}
