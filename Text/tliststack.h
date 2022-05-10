@@ -1,14 +1,14 @@
-п»ї#ifndef _tliststack_h
+#ifndef _tliststack_h
 #define _tliststack_h
 
 #include <iostream>
 
-//СЃСЃС‹Р»РєР° РЅР° СЃРїРёСЃРѕРє
+//ссылка на список
 template <class T>
 struct TNode 
 {
-	T val; //Р·Р°С‡РµРЅРёРµ
-	TNode<T>* pNext; //СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ СЃСЃС‹Р»РєСѓ
+	T val; //зачение
+	TNode<T>* pNext; //указатель на следующую ссылку
 };
 
 
@@ -18,13 +18,13 @@ class TStack
 	TNode<T>* pFirst;
 public:
 
-	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	//конструктор
 	TStack() 
 	{
 		pFirst = NULL;
 	}
 
-	//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	//деструктор
 	~TStack() 
 	{
 		TNode<T>* tmp = pFirst;
@@ -38,7 +38,7 @@ public:
 		}
 	}
 
-	//РєРѕРЅС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
+	//контруктор копирования
 	TStack(const TStack<T>& st) 
 	{
 		TNode<T>* tmp = st.pFirst;
@@ -52,7 +52,7 @@ public:
 		delete tmp;
 	}
 
-	//РїРµСЂРµРіСЂСѓР·РєР° =
+	//перегрузка =
 	TStack<T> operator=(const TStack<T>& st) 
 	{
 		if (this != &st) 
@@ -74,13 +74,13 @@ public:
 		return *this;
 	}
 
-	//РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
+	//проверка на пустоту
 	bool IsEmpty() const 
 	{
 		return pFirst == NULL;
 	}
 
-	//РїСЂРѕРІРµСЂРєР° РЅР° РїРѕР»РЅРѕС‚Сѓ
+	//проверка на полноту
 	bool IsFull() const 
 	{
 		TNode<T>* tmp;
@@ -94,7 +94,7 @@ public:
 		}
 	}
 
-	//Р·Р°РїСѓС€РёС‚СЊ РІ СЃС‚РµРє
+	//запушить в стек
 	void Push(const T& a) 
 	{
 		if (IsFull())
@@ -109,7 +109,7 @@ public:
 		}
 	}
 
-	//РёР·РІР»РµС‡РµРЅРёРµ РёР· СЃС‚РµРєР°
+	//извлечение из стека
 	T Pop() 
 	{
 		if (IsEmpty())
@@ -125,7 +125,7 @@ public:
 		}
 	}
 
-	//РІРµСЂС€РёРЅР° СЃС‚РµРєР°
+	//вершина стека
 	T Top() 
 	{
 		if (IsEmpty())
@@ -134,7 +134,7 @@ public:
 			return pFirst->val;
 	}
 
-	//РѕС‡РёС‰РµРЅРёРµ СЃС‚РµРєР°
+	//очищение стека
 	void Clear() 
 	{
 		TNode<T>* tmp = pFirst;

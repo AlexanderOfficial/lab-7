@@ -1,4 +1,4 @@
-п»ї#ifndef _TSTACK_
+#ifndef _TSTACK_
 #define _TSTACK_
 
 template <class T>
@@ -9,24 +9,21 @@ class TStack {
 
 public:
 
-	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
-	TStack(int _size = 10) 
-	{
+	//конструктор
+	TStack(int _size = 10) {
 		if (_size <= 0) throw _size;
 		size = _size;
 		arr = new T[size];
 		num = -1;
 	}
 
-	//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
-	~TStack() 
-	{
+	//деструктор
+	~TStack() {
 		delete[] arr;
 	}
 
-	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїРёСЂРѕРІР°РЅРёСЏ
-	TStack(const TStack& St) 
-	{
+	//конструктор копирования
+	TStack(const TStack& St) {
 		size = St.size;
 		arr = new T[size];
 		num = St.num;
@@ -34,57 +31,48 @@ public:
 			arr[i] = St.arr[i];
 	}
 
-	//Р·Р°РїСѓС€РёС‚СЊ РІ СЃС‚РµРє
-	void Push(const T& el) 
-	{
+	//запушить в стек
+	void Push(const T& el) {
 		if (IsFull()) throw num;
-		else 
-		{
+		else {
 			arr[++num] = el;
 		}
 	}
 
-	//РёР·РІР»РµС‡СЊ РёР· СЃС‚РµРєР°
-	T Pop() 
-	{
+	//извлечь из стека
+	T Pop() {
 		if (IsEmpty()) throw num;
-		else 
-		{
+		else {
 			return arr[num--];
 		}
 	}
 
-	//РІРµСЂС€РёРЅР° СЃС‚РµРєР°
-	T Top() 
-	{
+	//вершина стека
+	T Top() {
 		if (num == -1) throw num;
 		return arr[num];
 	}
 
-	//РїСЂРѕРІРµСЂРєР° РЅР° РїСѓСЃС‚РѕС‚Сѓ
-	bool IsEmpty() const 
-	{
+	//проверка на пустоту
+	bool IsEmpty() const {
 		if (num == -1)
 			return true;
 		return false;
 	}
 
-	//РїСЂРѕРІРµСЂРєР° РЅР° РїРѕР»РЅРѕС‚Сѓ
-	bool IsFull() const 
-	{
+	//проверка на полноту
+	bool IsFull() const {
 		if (num == size - 1)
 			return true;
 		return false;
 	}
 
-	//РѕС‰РёС‡РµРЅРёРµ СЃС‚РµРєР°
-	void Clear() 
-	{
+	//ощичение стека
+	void Clear() {
 		num = -1;
 	}
 
-	bool GetSize() 
-	{
+	bool GetSize() {
 		return size;
 	}
 };

@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
 #include <string>
@@ -12,6 +12,8 @@ void TProgLink::InitMemSystem(int size)
 	MemHeader.pFree = MemHeader.pFirst;
 	MemHeader.pLast = MemHeader.pFirst + (size - 1);
 	TProgLink* pLink = MemHeader.pFirst;
+
+	//memory markup
 	for (int i = 0; i < size - 1; i++) 
 	{
 		pLink->str[0] = '\0';

@@ -1,4 +1,4 @@
-п»ї#ifndef _ttext_h_
+#ifndef _ttext_h_
 #define _ttext_h_
 
 #include "TProgLink.h"
@@ -13,13 +13,13 @@ class TTextProg
 
 public:
 
-	TTextProg(); //РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	TTextProg(); //constructor
 
-	void Read(std::string fn); //С‡С‚РµРЅРёРµ С„Р°Р№Р»Р°
-	TProgLink* ReadRec(std::ifstream& ifs); //С‡С‚РµРЅРёРµ СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°
+	void Read(std::string fn); //чтение файла
+	TProgLink* ReadRec(std::ifstream& ifs); //чтение строки из файла
 
-	void Write(std::string fn); //Р·Р°РїРёС‚СЊ РІ С„Р°Р№Р» СЃ С‚Р°Р±СѓР»СЏС†РёРµР№
-	void WriteRec(std::ofstream& ofs, TProgLink* pWC); //СЂРµРєСѓСЂСЃРёРІРЅР°СЏ С„СѓРЅРєС†РёСЏ Р·Р°РїРёСЃРё
+	void Write(std::string fn); //запить в файл с табуляцией
+	void WriteRec(std::ofstream& ofs, TProgLink* pWC); //рекурсивная функция записи
 
 };
 #endif;

@@ -1,4 +1,4 @@
-п»ї#ifndef _ttextlink_h_
+#ifndef _ttextlink_h_
 #define _ttextlink_h_
 
 #include <string>
@@ -13,13 +13,13 @@ typedef char TStr[TTextLineLength];
 
 struct TTextMem 
 {
-	TProgLink* pFirst;    // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІРѕРµ Р·РІРµРЅРѕ РїР°РјСЏС‚Рё
-	TProgLink* pLast;     // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїРѕСЃР»РµРґРЅРµРµ Р·РІРµРЅРѕ РїР°РјСЏС‚Рё
-	TProgLink* pFree;     // РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РїРµСЂРІРѕРµ СЃРІРѕР±РѕРґРЅРѕРµ Р·РІРµРЅРѕ
+	TProgLink* pFirst;    // Указатель на первое звено памяти
+	TProgLink* pLast;     // Указатель на последнее звено памяти
+	TProgLink* pFree;     // Указатель на первое свободное звено
 	friend class TProgLink;
 };
 
-//Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р° РєР»Р°СЃСЃР° РґР»СЏ СЃС‚СЂРѕРєРё С‚РµРєСЃС‚Р° РїСЂРѕРіСЂР°РјРјС‹
+//значение объекта класса для строки текста программы
 class TProgLink 
 {
 protected:
@@ -28,13 +28,13 @@ protected:
 	friend class TTextProg;
 public:
 
-	TStr str; //С…СЂР°РЅРёС‚ СЃС‚СЂРѕРєСѓ //РёР»Рё СЃС‚СЂРёРЅРі???
+	TStr str; //хранит строку //или стринг???
 	int recD;
-	static void InitMemSystem(int size = MemSize); //РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїР°РјСЏС‚Рё
-	void* operator new (size_t size); //СЂР°СЃРїСЂРµРґРµР»РµРЅРёРµ СЃСЃС‹Р»РѕРє
-	void operator delete (void* pM); //РѕСЃРІРѕР±РѕР¶РґРµРЅРёРµ СЃСЃС‹Р»РєРё
+	static void InitMemSystem(int size = MemSize); //инициализация памяти
+	void* operator new (size_t size); //распределение ссылок
+	void operator delete (void* pM); //освобождение ссылки
 
-	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	//конструктор
 	TProgLink(const TStr c = NULL, TProgLink* pn = NULL, TProgLink* pd = NULL) 
 	{
 		recD = 0;
@@ -46,7 +46,7 @@ public:
 			strcpy_s(str, c);
 	}
 
-	//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	//деструктор
 	~TProgLink() 
 	{
 		///
