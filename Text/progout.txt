@@ -1,11 +1,13 @@
 program Example;
 const
-   pi: double = 3,1415926;
-   s: integer = 6;
+   pi: double = -3,1515926;
+   s: integer = -6;
+   a: integer = 6;
+   k: integer = 6;
 var
-   num1, num2: integer;
-   Res, d: double;
-   sashka: double;
+   num1: integer = 6;
+   Res: double=7,123;
+   sashka: double = 7,123;
 begin
    num1:=5;
    sashka:=20;
@@ -16,14 +18,14 @@ begin
    if(d mod 2 = 0) then
       if(sashka == 20)
          Res:=(num1-num2*5 div 2)/(d*2);
-         write('Результат = ', Res);
+         write('Result = ', Res);
       else
          write();
       write('bebebe');
    else
-      write('Неверный ввод');
+      write('Error');
       Read(sashka);
       if(sashka == 20)
          Res:=(num1-num2*5 div 2)/(d*2);
-         write('Результат = ', Res);
+         write('Result = ', Res);
 end.

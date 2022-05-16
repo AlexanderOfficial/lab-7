@@ -55,8 +55,7 @@ public:
 
 	//проверка на пустоту
 	bool IsEmpty() const {
-		if (num == -1)
-			return true;
+		if (num == -1) { return true; }
 		return false;
 	}
 

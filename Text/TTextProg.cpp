@@ -4,10 +4,12 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
+#include <vector>
 using namespace std;
 
 static int recD;
+
+vector <string> ivector = { "if","var","const","else", "Read", "Write" };
 
 TTextProg::TTextProg() 
 {
@@ -188,4 +190,214 @@ void TTextProg::WriteRec(ofstream& ofs, TProgLink* pWC)
 		recD++;
 	}
 	recD--;
+}
+
+
+void TTextProg::TCompiller()
+{
+	recD = 0;
+	recTCompiller(pFirst);
+}
+
+void TTextProg::recTCompiller(TProgLink* pWC)
+{
+	program_information progInf;
+	string helpString;
+	string helpString2;
+	for (int i = 0; i < recD; i++)
+	{
+		cout << "   ";
+	}
+	helpString = string(pWC->str);
+	//cout << helpString << endl;
+
+	if (helpString.find("program", 0) == 0) 
+	{
+		helpString = helpString.erase(0, 7);
+		progInf.nameOfProgram = helpString;
+		cout << helpString << endl;
+	}
+	if (helpString.find("const", 0) == 0) 
+	{
+		cout << "Константы: " << endl;
+		isConst = 1;
+		recTCompiller(pWC->pDown);
+		isConst = 0;
+	}
+
+	if (helpString.find("var", 0) == 0)
+	{
+		cout << "Переменные: " << endl;
+		isVar = 1;
+		recTCompiller(pWC->pDown);
+		isVar = 0;
+	}
+	
+	if (pWC->pDown)
+	{
+		recD++;
+		recTCompiller(pWC->pDown);
+	}
+	if ((isConst == 1)||(isVar == 1))
+	{
+		helpString = string(pWC->str);
+		if (isVar == 1)
+			itsVar(helpString);
+		if (isConst == 1)
+			itsConst(helpString);
+	}
+	if (pWC->pNext)
+	{
+		
+		recTCompiller(pWC->pNext);
+		recD++;
+	}
+	recD--;
+}
+//https://server.179.ru/tasks/cpp/total/161.html
+bool TTextProg::itsVar(string hS)
+{
+	int i = 0;
+	//pi: double = 3,1515926;
+	string helpString1;
+	string helpString2;
+	string helpString3;
+	while (hS[i] != ':') 
+	{
+		helpString1 = helpString1 + hS[i];
+		i++;
+	}
+	var_compiller newVar;
+	newVar.nameOfVar = helpString1;
+	cout << "Name " << newVar.nameOfVar << endl;
+	helpString1 = "";
+	if (hS[i] == ',')
+	{
+		do
+		{
+			i++;
+			helpString1 = helpString1 + hS[i];
+		} while (hS[i] != ':');
+	}
+	if (hS[i] == ':')
+	{
+		do 
+		{
+			i++;
+			if(hS[i] != ' ')
+				helpString1 = helpString1 + hS[i];
+		} while (hS[i] != '=' && hS[i] != ';');
+	}
+	if (helpString1 == "double;" || helpString1 == "double=")
+	{
+		helpString1 = "";
+		do
+		{
+			i++;
+			if (hS[i] != ' ')
+				helpString1 = helpString1 + hS[i];
+		} while (hS[i] != ';');
+		newVar.valueOfDoubleVar = atof(helpString1.c_str());
+		proginf.variki.push_back(newVar);
+		cout << "Значение " << newVar.valueOfDoubleVar << endl;
+	}
+	if (helpString1 == "integer;" || helpString1 == "integer=")
+	{
+		helpString1 = "";
+		do
+		{
+			i++;
+			if (hS[i] != ' ')
+				helpString1 = helpString1 + hS[i];
+		} while (hS[i] != ';');
+		newVar.valueOfIntVar = atof(helpString1.c_str());
+		proginf.variki.push_back(newVar);
+		cout << "Значение " << newVar.valueOfIntVar << endl;
+	}
+
+	return 0;
+}
+
+bool TTextProg::itsConst(string hS)
+{
+	int i = 0;
+	//pi: double = 3,1515926;
+	string helpString1;
+	string helpString2;
+	string helpString3;
+	while (hS[i] != ':')
+	{
+		helpString1 = helpString1 + hS[i];
+		i++;
+	}
+	const_compiller newConst;
+	newConst.nameOfConst = helpString1;
+	cout << "Name " << newConst.nameOfConst << endl;
+	helpString1 = "";
+	if (hS[i] == ',')
+	{
+		do
+		{
+			i++;
+			helpString1 = helpString1 + hS[i];
+		} while (hS[i] != ':');
+	}
+	if (hS[i] == ':')
+	{
+		do
+		{
+			i++;
+			if (hS[i] != ' ')
+				helpString1 = helpString1 + hS[i];
+		} while (hS[i] != '=' && hS[i] != ';');
+	}
+	if (helpString1 == "double;" || helpString1 == "double=")
+	{
+		helpString1 = "";
+		do
+		{
+			i++;
+			if (hS[i] != ' ')
+				helpString1 = helpString1 + hS[i];
+		} while (hS[i] != ';');
+		newConst.valueOfDoubleConst = atof(helpString1.c_str());
+		proginf.constantic.push_back(newConst);
+		cout << "Значение " << newConst.valueOfDoubleConst << endl;
+	}
+	if (helpString1 == "integer;" || helpString1 == "integer=")
+	{
+		helpString1 = "";
+		do
+		{
+			i++;
+			if (hS[i] != ' ')
+				helpString1 = helpString1 + hS[i];
+		} while (hS[i] != ';');
+		newConst.valueOfIntConst = atof(helpString1.c_str());
+		proginf.constantic.push_back(newConst);
+		cout << "Значение^ " << newConst.valueOfIntConst << endl;
+	}
+
+	return 0;
+}
+
+void TTextProg::printVector()
+{
+	var_compiller dopinf;
+	for (int i = 0; i < proginf.variki.size(); i++) 
+	{
+		dopinf = proginf.variki[i];
+		cout << "Имя: " << dopinf.nameOfVar << endl;
+		cout << "Значение integer = " <<dopinf.valueOfIntVar << endl;
+		cout << "Значение double = " <<dopinf.valueOfDoubleVar << endl;
+	}
+	cout << "------------------------------------------------------" << endl;
+	const_compiller dopinf2;
+	for (int i = 0; i < proginf.constantic.size(); i++) 
+	{
+		dopinf2 = proginf.constantic[i];
+		cout << "Имя: " << dopinf2.nameOfConst << endl;
+		cout << "Значение integer = " << dopinf2.valueOfIntConst << endl;
+		cout << "Значение double = " << dopinf2.valueOfDoubleConst << endl;
+	}
 }
