@@ -9,6 +9,7 @@ var
  Res: double=7,123;
  sashka: double = 7,123;
 begin
+ pi:=5;
  num1:=5;
  sashka:=20;
  write('Введите четное целое число');

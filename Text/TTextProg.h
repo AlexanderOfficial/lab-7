@@ -9,12 +9,14 @@
 using namespace std;
 
 
-
+//0 - double
+//1 - integer
 
 struct const_compiller {
 	string nameOfConst;
 	double valueOfDoubleConst = 0;
 	int valueOfIntConst = 0;
+	bool doubleOrInteger = 0;
 };
 
 
@@ -22,8 +24,14 @@ struct var_compiller {
 	string nameOfVar;
 	double valueOfDoubleVar = 0;
 	int valueOfIntVar = 0;
+	bool doubleOrInteger = 0;
 };
 
+struct forChange {
+	string name;
+	double meaningOf;//значение
+	int a;
+};
 
 class TTextProg //TText
 {
@@ -50,6 +58,13 @@ public:
 	bool itsVar(string hS);
 	bool itsConst(string hS);
 	void printVector();
+
+	bool thisIsTheInitializationOfTheVariableOrConst(string input);
+	bool initializeVariable(string input);
+	forChange checkFunction(string input);
+
+
+
 
 
 	void Read(std::string fn); //чтение файла

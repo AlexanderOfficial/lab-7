@@ -211,7 +211,7 @@ void TTextProg::recTCompiller(TProgLink* pWC)
 	helpString = string(pWC->str);
 	//cout << helpString << endl;
 
-	if (helpString.find("program", 0) == 0) 
+	if (helpString.find("program ", 0) == 0) 
 	{
 		helpString = helpString.erase(0, 7);
 		progInf.nameOfProgram = helpString;
@@ -232,7 +232,13 @@ void TTextProg::recTCompiller(TProgLink* pWC)
 		recTCompiller(pWC->pDown);
 		isVar = 0;
 	}
-	
+	if (helpString.find("begin", 0) == 0)
+	{
+		cout << "Зашли в бегин: " << endl;
+		isBegin = 1;
+		recTCompiller(pWC->pDown);
+		isBegin = 0;
+	}
 	if (pWC->pDown)
 	{
 		recD++;
@@ -245,6 +251,11 @@ void TTextProg::recTCompiller(TProgLink* pWC)
 			itsVar(helpString);
 		if (isConst == 1)
 			itsConst(helpString);
+	}
+	if (isBegin == 1)
+	{
+		helpString = string(pWC->str);
+		checkFunction(helpString);
 	}
 	if (pWC->pNext)
 	{
@@ -360,6 +371,7 @@ bool TTextProg::itsConst(string hS)
 			if (hS[i] != ' ')
 				helpString1 = helpString1 + hS[i];
 		} while (hS[i] != ';');
+		newConst.doubleOrInteger = 0;
 		newConst.valueOfDoubleConst = atof(helpString1.c_str());
 		proginf.constantic.push_back(newConst);
 		cout << "Значение " << newConst.valueOfDoubleConst << endl;
@@ -373,6 +385,7 @@ bool TTextProg::itsConst(string hS)
 			if (hS[i] != ' ')
 				helpString1 = helpString1 + hS[i];
 		} while (hS[i] != ';');
+		newConst.doubleOrInteger = 1;
 		newConst.valueOfIntConst = atof(helpString1.c_str());
 		proginf.constantic.push_back(newConst);
 		cout << "Значение^ " << newConst.valueOfIntConst << endl;
@@ -400,4 +413,88 @@ void TTextProg::printVector()
 		cout << "Значение integer = " << dopinf2.valueOfIntConst << endl;
 		cout << "Значение double = " << dopinf2.valueOfDoubleConst << endl;
 	}
+}
+
+bool TTextProg::thisIsTheInitializationOfTheVariableOrConst(string input)
+{ //тут именно инициализация переменных 
+	forChange forCh;
+	forCh = checkFunction(input);
+	return 0;
+}
+
+bool TTextProg::initializeVariable(string input)
+{
+	return false;
+}
+
+
+forChange TTextProg::checkFunction(string input)
+{
+	//num1: integer = 6;
+	string helpString1;
+	string helpString2;
+	forChange newChange;
+	int i = 0;
+	while (input[i] != ':')
+	{
+		helpString1 = helpString1 + input[i];
+		i++;
+	}
+	while (input[i] != ';')
+	{
+		if ((input[i] != '=') && (input[i] != ' ')&& (input[i] != ':'))
+		{
+			helpString2 = helpString2 + input[i];
+			//i++;
+		}
+		i++;
+	}
+	//тут я типо делаю поиск сначала на константам переменным, потом по уже for if и тд
+	const_compiller const_comp;
+	for (int i = 0; i < proginf.constantic.size();i++) {
+		const_comp = proginf.constantic[i];
+		if (helpString1 == const_comp.nameOfConst) {
+			cout << "Исключение" << endl;
+			//i = proginf.constantic.size();
+			//newChange.name = const_comp.nameOfConst;
+			//if (const_comp.valueOfDoubleConst != 0) {
+			//	newChange.meaningOf = const_comp.valueOfDoubleConst;
+			//}
+			//else { newChange.meaningOf = const_comp.valueOfIntConst; }
+			//return newChange; //0 значит есть среди констант
+		}
+	}
+	//поиск по переменным векторам
+	var_compiller var_comp;
+	for (int i = 0; i < proginf.variki.size(); i++) 
+	{
+		var_comp = proginf.variki[i];
+		if (helpString1 == var_comp.nameOfVar) 
+		{
+			if (var_comp.doubleOrInteger == 0)
+			{
+				var_comp.valueOfDoubleVar = atof(helpString2.c_str());
+				cout << "Присвоили к " << var_comp.nameOfVar << " = " << var_comp.valueOfDoubleVar << endl;
+			}
+			if (var_comp.doubleOrInteger == 1) 
+			{
+				var_comp.valueOfIntVar = atof(helpString2.c_str());
+				cout << "Присвоили к " << var_comp.nameOfVar << " = " << var_comp.valueOfIntVar << endl;
+			}
+			////i = proginf.constantic.size();
+			//newChange.name = var_comp.nameOfVar;
+			//if (var_comp.valueOfDoubleVar != 0) 
+			//{
+			//	newChange.meaningOf = var_comp.valueOfDoubleVar;
+			//}
+			//else { newChange.meaningOf = var_comp.valueOfIntVar; }
+			newChange.a = 0;
+			return newChange; //0 значит есть среди констант
+		}
+	}
+
+
+
+
+	return newChange;
 }
