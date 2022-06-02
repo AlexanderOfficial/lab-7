@@ -43,35 +43,35 @@ public:
 		else { strcpy_s(str, c); }
 	}
 
-	//Функции для навигации по списку
-	void ToNext();
-	void ToDown();
-	void ToPrev();
-	void ToFirst();
+	////Функции для навигации по списку
+	//void ToNext();
+	//void ToDown();
+	//void ToPrev();
+	//void ToFirst();
 
-	//Функции для модификации
-	void InsNextLine(char* s);
-	void InsNextSection(char* s);
-	void InsDownLine(char* s);
-	void InsDownSection(char* s);
-	void DelNext();
-	void DelDown();
-	void ToStart();
+	////Функции для модификации
+	//void InsNextLine(char* s);
+	//void InsNextSection(char* s);
+	//void InsDownLine(char* s);
+	//void InsDownSection(char* s);
+	//void DelNext();
+	//void DelDown();
+	//void ToStart();
 
-	//Функции для работы с файлом
-	void Read(char* pFileName);
-	//void PrintText(Zveno* ptl);
-	void Print();
-	//void WriteText(ofstream& ofs, Zveno* tl);
-	void Write(char* pFileName);
+	////Функции для работы с файлом
+	//void Read(char* pFileName);
+	////void PrintText(Zveno* ptl);
+	//void Print();
+	////void WriteText(ofstream& ofs, Zveno* tl);
+	//void Write(char* pFileName);
 
-	//Проход по списку с помощью итератора
-	int IsEnd();
-	void GoNext();
-	void Reset();
-	//Для маркировки текущего звена
-	void PointerCreate();
-	void PointerDelete();
+	////Проход по списку с помощью итератора
+	//int IsEnd();
+	//void GoNext();
+	//void Reset();
+	////Для маркировки текущего звена
+	//void PointerCreate();
+	//void PointerDelete();
 
 
 

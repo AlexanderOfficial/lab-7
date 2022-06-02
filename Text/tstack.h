@@ -1,6 +1,8 @@
 #ifndef _TSTACK_
 #define _TSTACK_
 
+const int MaxStackSize = 100;
+
 template <class T>
 class TStack {
 	T* arr;
@@ -12,6 +14,7 @@ public:
 	//конструктор
 	TStack(int _size = 10) {
 		if (_size <= 0) throw _size;
+		if (_size > MaxStackSize) throw _size;
 		size = _size;
 		arr = new T[size];
 		num = -1;

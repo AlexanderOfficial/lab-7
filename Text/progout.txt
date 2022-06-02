@@ -1,31 +1,32 @@
-program Example;
-const
+program test2;
+const//kdfkj
    pi: double = -3,1515926;
    s: integer = -6;
-   a: integer = 6;
-   k: integer = 6;
 var
    num1: integer = 6;
    Res: double=7,123;
-   sashka: double = 7,123;
+   Pen: double = 0;
+   sashka: double = 7,123; //h
+   age: integer = 1;
+   x: integer = 5;
+   y: integer = 7;
 begin
    num1:=5;
    sashka:=20;
-   write('Введите четное целое число');
-   Read(num2);
-   write('Введите вещественное число');
-   Read(d);
-   if(d mod 2 = 0) then
-      if(sashka == 20)
-         Res:=(num1-num2*5 div 2)/(d*2);
-         write('Result = ', Res);
+   Res:=(10-num1*(3 mod 1))/2;
+   Pen:=((x+y) div 3) mod 5;
+   write("Pen = ", Pen);
+   num1:=2;
+   if(sashka == 20)then
+      if(3 mod 2 == 1)then
+         write("How old are you?");
+         Read(age);
+         write("Your age = ", age);
       else
-         write();
-      write('bebebe');
+         write("Res = ", pi);
+      write("bebebe");
    else
-      write('Error');
+      write("Pochti end");
       Read(sashka);
-      if(sashka == 20)
-         Res:=(num1-num2*5 div 2)/(d*2);
-         write('Result = ', Res);
+   write("The END");
 end.
